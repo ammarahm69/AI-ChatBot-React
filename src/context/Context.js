@@ -13,14 +13,20 @@ const ContextProviderComponent = (props) => {
 
   const onSent = async () => {
     setLoading(true);
-    setResultData("");
-    setLoading(true);
+    setResultData(""); // Clear previous data
     setResult(true);
-    const result = await run(input);
-    setResultData(result)
-    setLoading(false)
-    setInput("")
- 
+    setRecentPrompt(input);
+
+    console.log("Input before API call:", input);
+
+    const result = await run(input); // Call the API and get the response
+
+    console.log("API response:", result);
+
+    setResultData(result); // Set the response in the state
+
+    setLoading(false);
+    setInput(""); // Clear the input field after submission
   };
 
   const contextValue = {

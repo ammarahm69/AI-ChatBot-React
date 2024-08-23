@@ -105,3 +105,42 @@ margin: auto;
     text-align: center;
     font-weight: 300;
 }
+.result{
+    padding: 0px 5px;
+    max-height: 70vh;
+    overflow-y: hidden;
+}
+.result::-webkit-scrollbar{
+    display: none;
+}
+.result-title{
+    margin: 40px 0px;
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+.result-title img{
+    width: 40px;
+    border-radius: 50px;
+}
+.result-data{
+    display: flex;
+    align-items: start;
+    gap: 20px;
+}
+@keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .loader {
+    font-size: 16px;
+    animation: pulse 1.5s infinite;
+  }

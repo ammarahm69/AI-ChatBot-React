@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
+import { motion } from "framer-motion";
 import UserIcon from "../assets/user_icon.png";
 import CompassIcon from "../assets/compass_icon.png";
 import BulbIcon from "../assets/bulb_icon.png";
 import MessageIcon from "../assets/message_icon.png";
 import CodeIcon from "../assets/code_icon.png";
 import GalleryIcon from "../assets/gallery_icon.png";
+import Gemini from "../assets/gemini_icon.png";
 import SendIcon from "../assets/send_icon.png";
 import MicIcon from "../assets/mic_icon.png";
 import { Context } from "../context/Context";
@@ -59,9 +61,21 @@ function Main() {
           </>
         ) : (
           <>
-            <div className="result">
-
-            </div>
+            <motion.div
+              className="result"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="result-title">
+                <img src={UserIcon} alt="" />
+                <p>{recentPrompt}</p>
+              </div>
+              <div className="result-data">
+                <img src={Gemini} alt="" />
+                <p>{loading ? <div className="loader">Generating ....</div> : resultData}</p>
+              </div>
+            </motion.div>
           </>
         )}
         {/* Input Prompting */}
@@ -79,7 +93,7 @@ function Main() {
               <img
                 src={SendIcon}
                 alt=""
-                onClick={() => onSent()} // Call onSent only when the send icon is clicked
+                onClick={onSent} 
               />
             </div>
           </div>
