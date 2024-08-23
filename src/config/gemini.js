@@ -27,6 +27,7 @@ import {
   
       const result = await chatSession.sendMessage(prompt);
       console.log(result.response.text());
+      
     } catch (error) {
       console.error("Error generating response:", error);
     }

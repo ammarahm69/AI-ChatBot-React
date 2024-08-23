@@ -9,16 +9,18 @@ import SendIcon from "../assets/send_icon.png";
 import MicIcon from "../assets/mic_icon.png";
 import { Context } from "../context/Context";
 import "../style/main.css";
+
 function Main() {
   const {
-    OnSent,
+    onSent,
     recentPrompt,
     showResult,
     loading,
     resultData,
-    setResponse,
-    response,
+    setInput,
+    input,
   } = useContext(Context);
+
   return (
     <div className="main">
       <div className="nav">
@@ -28,38 +30,57 @@ function Main() {
 
       {/* Main container */}
       <div className="main-container">
-        <div className="greet">
-          <p>
-            <span>Hello, Dev.</span>
-          </p>
-          <p>How can I help you today ?</p>
-        </div>
-        <div className="cards">
-          <div className="card">
-            <p>Suggest beautiful places to see on an upcoming road trip</p>
-            <img src={CompassIcon} alt="" />
-          </div>
-          <div className="card">
-            <p>Briefly summarize this concept: urban planning</p>
-            <img src={BulbIcon} alt="" />
-          </div>
-          <div className="card">
-            <p>Brainstorm team bonding activities for our work retreat</p>
-            <img src={MessageIcon} alt="" />
-          </div>
-          <div className="card">
-            <p>Tell me about React js and React native</p>
-            <img src={CodeIcon} alt="" />
-          </div>
-        </div>
+        {!showResult ? (
+          <>
+            <div className="greet">
+              <p>
+                <span>Hello, Dev.</span>
+              </p>
+              <p>How can I help you today?</p>
+            </div>
+            <div className="cards">
+              <div className="card">
+                <p>Suggest beautiful places to see on an upcoming road trip</p>
+                <img src={CompassIcon} alt="" />
+              </div>
+              <div className="card">
+                <p>Briefly summarize this concept: urban planning</p>
+                <img src={BulbIcon} alt="" />
+              </div>
+              <div className="card">
+                <p>Brainstorm team bonding activities for our work retreat</p>
+                <img src={MessageIcon} alt="" />
+              </div>
+              <div className="card">
+                <p>Tell me about React js and React native</p>
+                <img src={CodeIcon} alt="" />
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="result">
+
+            </div>
+          </>
+        )}
         {/* Input Prompting */}
         <div className="main-bottom">
           <div className="search-box">
-            <input type="text" placeholder="Enter a prompt here." />
+            <input
+              type="text"
+              placeholder="Enter a prompt here."
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
+            />
             <div>
               <img src={GalleryIcon} alt="" />
               <img src={MicIcon} alt="" />
-              <img src={SendIcon} alt="" />
+              <img
+                src={SendIcon}
+                alt=""
+                onClick={() => onSent()} // Call onSent only when the send icon is clicked
+              />
             </div>
           </div>
           <p className="bottom-info">
