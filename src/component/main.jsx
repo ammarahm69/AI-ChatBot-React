@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import UserIcon from "../assets/user_icon.png";
 import CompassIcon from "../assets/compass_icon.png";
-import BulbIcon from '../assets/bulb_icon.png'
-import MessageIcon from '../assets/message_icon.png'
-import CodeIcon from '../assets/code_icon.png'
-import GalleryIcon from '../assets/gallery_icon.png'
-import SendIcon from '../assets/send_icon.png'
-import MicIcon from '../assets/mic_icon.png'
-
-
+import BulbIcon from "../assets/bulb_icon.png";
+import MessageIcon from "../assets/message_icon.png";
+import CodeIcon from "../assets/code_icon.png";
+import GalleryIcon from "../assets/gallery_icon.png";
+import SendIcon from "../assets/send_icon.png";
+import MicIcon from "../assets/mic_icon.png";
+import { Context } from "../context/Context";
 import "../style/main.css";
 function Main() {
+  const {
+    OnSent,
+    recentPrompt,
+    showResult,
+    loading,
+    resultData,
+    setResponse,
+    response,
+  } = useContext(Context);
   return (
     <div className="main">
       <div className="nav">
@@ -54,11 +62,13 @@ function Main() {
               <img src={SendIcon} alt="" />
             </div>
           </div>
-          <p className="bottom-info">Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini App</p>
+          <p className="bottom-info">
+            Gemini may display inaccurate info, including about people, so
+            double-check its responses. Your privacy and Gemini App
+          </p>
         </div>
       </div>
     </div>
-    
   );
 }
 
