@@ -36,7 +36,7 @@ function Main() {
           <>
             <div className="greet">
               <p>
-                <span>Hello, Dev.</span>
+                <span>Hello World .</span>
               </p>
               <p>How can I help you today?</p>
             </div>
@@ -72,8 +72,12 @@ function Main() {
                 <p>{recentPrompt}</p>
               </div>
               <div className="result-data">
-                <img src={Gemini} alt="" />
-                <p>{loading ? <div className="loader">Generating ....</div> : resultData}</p>
+                <img src={Gemini} alt="Gemini Image" />
+                {resultData ? (
+                  <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                ) : (
+                  <p>Generating...</p>
+                )}
               </div>
             </motion.div>
           </>
@@ -90,11 +94,7 @@ function Main() {
             <div>
               <img src={GalleryIcon} alt="" />
               <img src={MicIcon} alt="" />
-              <img
-                src={SendIcon}
-                alt=""
-                onClick={onSent} 
-              />
+             {input ?<img src={SendIcon} alt="" onClick={onSent} /> : null} 
             </div>
           </div>
           <p className="bottom-info">

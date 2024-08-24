@@ -36,7 +36,7 @@
 }
 .main .cards{
     display: grid;
-    grid-template-columns: repeat(auto-fill , minmax(200px ,1fr));
+    grid-template-columns: repeat(auto-fill , minmax(180px ,1fr));
     gap: 15px;
     padding: 20px;
 }
@@ -108,7 +108,7 @@ margin: auto;
 .result{
     padding: 0px 5px;
     max-height: 70vh;
-    overflow-y: hidden;
+    overflow: scroll;
 }
 .result::-webkit-scrollbar{
     display: none;
@@ -143,4 +143,25 @@ margin: auto;
   .loader {
     font-size: 16px;
     animation: pulse 1.5s infinite;
+  }
+
+  .result-data p{
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  @media (max-width:600px) {
+    .main-bottom input{
+      flex: none;
+      width: 150px;
+    }
+    .main-bottom img{
+      width: 20px;
+    }
+    .search-box{
+      padding: 5px 10px;
+    }
+    .search-box div{
+      gap: 5px;
+    }
   }
